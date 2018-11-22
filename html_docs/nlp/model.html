@@ -1,0 +1,120 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module model</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>model</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/mark/eclipse-workspace/InsectNLTK/InsectNLTK/src/nlp/model.py">/home/mark/eclipse-workspace/InsectNLTK/InsectNLTK/src/nlp/model.py</a></font></td></tr></table>
+    <p><tt>Created&nbsp;on&nbsp;Sep&nbsp;20,&nbsp;2017<br>
+&nbsp;<br>
+Module&nbsp;created&nbsp;to&nbsp;apply&nbsp;topic&nbsp;modelling.&nbsp;This&nbsp;is&nbsp;the&nbsp;main&nbsp;module&nbsp;that&nbsp;performs&nbsp;lDA&nbsp;and&nbsp;HDP.&nbsp;The&nbsp;module&nbsp;takes&nbsp;data<br>
+from&nbsp;MongoDB,&nbsp;gets&nbsp;the&nbsp;text,&nbsp;and&nbsp;then&nbsp;applies&nbsp;that&nbsp;text&nbsp;to&nbsp;the&nbsp;topic&nbsp;model&nbsp;which&nbsp;is&nbsp;then&nbsp;outputed&nbsp;in&nbsp;csv&nbsp;term&nbsp;and&nbsp;topic&nbsp;outputs&nbsp;<br>
+and&nbsp;html&nbsp;files&nbsp;used&nbsp;to&nbsp;visualize&nbsp;the&nbsp;LDA&nbsp;topic&nbsp;model&nbsp;results&nbsp;using&nbsp;different&nbsp;topic&nbsp;numbers.<br>
+&nbsp;<br>
+@author:</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="csv.html">csv</a><br>
+<a href="db.html">db</a><br>
+<a href="db.filterBeetle.html">db.filterBeetle</a><br>
+<a href="gensim.html">gensim</a><br>
+</td><td width="25%" valign=top><a href="logging.html">logging</a><br>
+<a href="nltk.html">nltk</a><br>
+<a href="numpy.html">numpy</a><br>
+<a href="operator.html">operator</a><br>
+</td><td width="25%" valign=top><a href="os.html">os</a><br>
+<a href="pyLDAvis.html">pyLDAvis</a><br>
+<a href="re.html">re</a><br>
+<a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top><a href="warnings.html">warnings</a><br>
+<a href="wordninja.html">wordninja</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-addToResults"><strong>addToResults</strong></a>(result_dict)</dt><dd><tt>Add&nbsp;dictionary&nbsp;to&nbsp;a&nbsp;list&nbsp;of&nbsp;results&nbsp;from&nbsp;each&nbsp;text<br>
+result_dict--&nbsp;this&nbsp;is&nbsp;the&nbsp;resulting&nbsp;terms</tt></dd></dl>
+ <dl><dt><a name="-addTotalTermResults"><strong>addTotalTermResults</strong></a>(t)</dt><dd><tt>Method&nbsp;to&nbsp;add&nbsp;results&nbsp;and&nbsp;clean&nbsp;by&nbsp;removing&nbsp;extra&nbsp;white&nbsp;space<br>
+t--&nbsp;results&nbsp;and&nbsp;text&nbsp;to&nbsp;clean<br>
+&nbsp;<br>
+result_dict:&nbsp;dictionary&nbsp;of&nbsp;the&nbsp;term&nbsp;and&nbsp;values&nbsp;that&nbsp;are&nbsp;cleaned</tt></dd></dl>
+ <dl><dt><a name="-dictionaryResults"><strong>dictionaryResults</strong></a>()</dt><dd><tt>Method&nbsp;aggregates&nbsp;all&nbsp;the&nbsp;dictionaries&nbsp;for&nbsp;keyterms&nbsp;and&nbsp;their&nbsp;values.<br>
+returns&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;all&nbsp;keyterms&nbsp;and&nbsp;values</tt></dd></dl>
+ <dl><dt><a name="-evaluate_graph"><strong>evaluate_graph</strong></a>(dictionary, corpus, texts, limit)</dt><dd><tt>Method&nbsp;for&nbsp;using&nbsp;a&nbsp;coherence&nbsp;model&nbsp;to&nbsp;look&nbsp;at&nbsp;topic&nbsp;coherence&nbsp;for&nbsp;LDA&nbsp;models.<br>
+&nbsp;<br>
+Parameters:<br>
+----------<br>
+dictionary--&nbsp;Gensim&nbsp;dictionary<br>
+corpus--&nbsp;Gensim&nbsp;corpus<br>
+limit--&nbsp;topic&nbsp;limit<br>
+&nbsp;<br>
+Returns:<br>
+-------<br>
+lm_list&nbsp;:&nbsp;List&nbsp;of&nbsp;LDA&nbsp;topic&nbsp;models<br>
+c_v&nbsp;:&nbsp;Coherence&nbsp;values&nbsp;corresponding&nbsp;to&nbsp;the&nbsp;LDA&nbsp;model&nbsp;with&nbsp;respective&nbsp;number&nbsp;of&nbsp;topics</tt></dd></dl>
+ <dl><dt><a name="-integrateText"><strong>integrateText</strong></a>(content)</dt><dd><tt>Method&nbsp;used&nbsp;to&nbsp;retrieve&nbsp;text,&nbsp;which&nbsp;comes&nbsp;from&nbsp;the&nbsp;database,&nbsp;and&nbsp;integrate&nbsp;together&nbsp;for&nbsp;larger&nbsp;analysis&nbsp;in&nbsp;topic<br>
+models.<br>
+content--&nbsp;the&nbsp;content&nbsp;with&nbsp;the&nbsp;data&nbsp;to&nbsp;retrieve.</tt></dd></dl>
+ <dl><dt><a name="-preProcsText"><strong>preProcsText</strong></a>(files)</dt><dd><tt>Another&nbsp;method&nbsp;to&nbsp;process&nbsp;text&nbsp;and&nbsp;tokenize&nbsp;files&nbsp;based&nbsp;on&nbsp;minimum&nbsp;length&nbsp;of&nbsp;file<br>
+&nbsp;<br>
+files--&nbsp;text&nbsp;for&nbsp;processing</tt></dd></dl>
+ <dl><dt><a name="-printEvaluation"><strong>printEvaluation</strong></a>(modList, results, i)</dt><dd><tt>Method&nbsp;to&nbsp;print&nbsp;csv&nbsp;output&nbsp;results&nbsp;of&nbsp;the&nbsp;evaluations&nbsp;conducted&nbsp;<br>
+&nbsp;<br>
+modList--&nbsp;the&nbsp;model&nbsp;evaluated<br>
+results--&nbsp;the&nbsp;result&nbsp;scores<br>
+i--&nbsp;the&nbsp;index&nbsp;output&nbsp;desired</tt></dd></dl>
+ <dl><dt><a name="-printResults"><strong>printResults</strong></a>(i, model)</dt><dd><tt>Output&nbsp;results&nbsp;of&nbsp;the&nbsp;analysis<br>
+i--&nbsp;the&nbsp;topic&nbsp;number<br>
+model--&nbsp;the&nbsp;model&nbsp;used&nbsp;(e.g.,&nbsp;lda,&nbsp;hdp)</tt></dd></dl>
+ <dl><dt><a name="-process_texts"><strong>process_texts</strong></a>(texts)</dt><dd><tt>Function&nbsp;to&nbsp;process&nbsp;texts.&nbsp;Following&nbsp;are&nbsp;the&nbsp;steps&nbsp;we&nbsp;take:<br>
+&nbsp;<br>
+1.&nbsp;Stopword&nbsp;Removal.<br>
+2.&nbsp;Collocation&nbsp;detection.<br>
+3.&nbsp;Lemmatization&nbsp;(not&nbsp;stem&nbsp;since&nbsp;stemming&nbsp;can&nbsp;reduce&nbsp;the&nbsp;interpretability).<br>
+&nbsp;<br>
+Parameters:<br>
+----------<br>
+texts--&nbsp;Tokenized&nbsp;texts.<br>
+&nbsp;<br>
+Returns:<br>
+-------<br>
+texts:&nbsp;Pre-processed&nbsp;tokenized&nbsp;texts.</tt></dd></dl>
+ <dl><dt><a name="-ret_top_model"><strong>ret_top_model</strong></a>()</dt><dd><tt>Since&nbsp;LDAmodel&nbsp;is&nbsp;a&nbsp;probabilistic&nbsp;model,&nbsp;it&nbsp;comes&nbsp;up&nbsp;different&nbsp;topics&nbsp;each&nbsp;time&nbsp;we&nbsp;run&nbsp;it.&nbsp;To&nbsp;control&nbsp;the<br>
+quality&nbsp;of&nbsp;the&nbsp;topic&nbsp;model&nbsp;we&nbsp;produce,&nbsp;we&nbsp;can&nbsp;see&nbsp;what&nbsp;the&nbsp;interpretability&nbsp;of&nbsp;the&nbsp;best&nbsp;topic&nbsp;is&nbsp;and&nbsp;keep<br>
+evaluating&nbsp;the&nbsp;topic&nbsp;model&nbsp;until&nbsp;this&nbsp;threshold&nbsp;is&nbsp;crossed.&nbsp;<br>
+&nbsp;<br>
+method&nbsp;returns&nbsp;lm:&nbsp;final&nbsp;evaluated&nbsp;topic&nbsp;model<br>
+method&nbsp;returns&nbsp;top_topics:&nbsp;ranked&nbsp;topics&nbsp;in&nbsp;decreasing&nbsp;order.&nbsp;List&nbsp;of&nbsp;tuples</tt></dd></dl>
+ <dl><dt><a name="-retrieveText"><strong>retrieveText</strong></a>(content)</dt><dd><tt>Method&nbsp;to&nbsp;get&nbsp;the&nbsp;text&nbsp;output&nbsp;from&nbsp;results&nbsp;in&nbsp;a&nbsp;CSV.&nbsp;Retrieves&nbsp;relevant&nbsp;texts&nbsp;only.<br>
+content--&nbsp;the&nbsp;content&nbsp;to&nbsp;retrieve&nbsp;text</tt></dd></dl>
+ <dl><dt><a name="-run"><strong>run</strong></a>()</dt><dd><tt>The&nbsp;method&nbsp;to&nbsp;run&nbsp;for&nbsp;implementing&nbsp;the&nbsp;topic&nbsp;models&nbsp;(LDA&nbsp;and&nbsp;HDP).<br>
+The&nbsp;below&nbsp;code&nbsp;is&nbsp;executed&nbsp;to&nbsp;conduct&nbsp;the&nbsp;models&nbsp;for&nbsp;topic&nbsp;modelling&nbsp;and&nbsp;<br>
+coherence&nbsp;testing&nbsp;for&nbsp;LDA&nbsp;models</tt></dd></dl>
+ <dl><dt><a name="-test_directories"><strong>test_directories</strong></a>()</dt><dd><tt>Data&nbsp;files&nbsp;loaded&nbsp;from&nbsp;test.&nbsp;It&nbsp;returns&nbsp;a&nbsp;file&nbsp;for&nbsp;training&nbsp;or&nbsp;testing.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>beetleResults</strong> = {}<br>
+<strong>dateResults</strong> = {}<br>
+<strong>listResults</strong> = []<br>
+<strong>stops</strong> = set([u'a', u'about', u'above', u'after', u'again', u'against', ...])<br>
+<strong>stopwords</strong> = [u'i', u'me', u'my', u'myself', u'we', u'our', u'ours', u'ourselves', u'you', u"you're", u"you've", u"you'll", u"you'd", u'your', u'yours', u'yourself', u'yourselves', u'he', u'him', u'his', ...]<br>
+<strong>typeResults</strong> = {}</td></tr></table>
+</body></html>

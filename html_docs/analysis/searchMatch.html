@@ -1,0 +1,112 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module searchMatch</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>searchMatch</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/mark/eclipse-workspace/InsectNLTK/InsectNLTK/src/analysis/searchMatch.py">/home/mark/eclipse-workspace/InsectNLTK/InsectNLTK/src/analysis/searchMatch.py</a></font></td></tr></table>
+    <p><tt>Class&nbsp;used&nbsp;to&nbsp;load&nbsp;hdp&nbsp;and&nbsp;lda&nbsp;topics&nbsp;and&nbsp;terms.<br>
+These&nbsp;topics&nbsp;and&nbsp;terms&nbsp;are&nbsp;searched&nbsp;and&nbsp;a&nbsp;tf-idf&nbsp;analysis&nbsp;is&nbsp;conducted.<br>
+The&nbsp;results&nbsp;are&nbsp;based&nbsp;on&nbsp;years&nbsp;search&nbsp;and&nbsp;types&nbsp;of&nbsp;government&nbsp;documents&nbsp;(e.g.,&nbsp;Federal).<br>
+See&nbsp;MPB_Source_Doc.csv&nbsp;'Material&nbsp;type'&nbsp;column&nbsp;to&nbsp;see&nbsp;types&nbsp;of&nbsp;documents.<br>
+&nbsp;<br>
+@author:</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="base64.html">base64</a><br>
+<a href="csv.html">csv</a><br>
+<a href="scrape.csvExtract.html">scrape.csvExtract</a><br>
+</td><td width="25%" valign=top><a href="db.filterBeetle.html">db.filterBeetle</a><br>
+<a href="db.filterGovernment.html">db.filterGovernment</a><br>
+<a href="gridfs.html">gridfs</a><br>
+</td><td width="25%" valign=top><a href="db.mongoConnection.html">db.mongoConnection</a><br>
+<a href="numpy.html">numpy</a><br>
+<a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="nlp.patternMatching.html">nlp.patternMatching</a><br>
+<a href="re.html">re</a><br>
+<a href="zlib.html">zlib</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="nlp.patternMatching.html#PatternMatcher">nlp.patternMatching.PatternMatcher</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="searchMatch.html#WordPatternAnalysis">WordPatternAnalysis</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="WordPatternAnalysis">class <strong>WordPatternAnalysis</strong></a>(<a href="nlp.patternMatching.html#PatternMatcher">nlp.patternMatching.PatternMatcher</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="WordPatternAnalysis-loadSearch"><strong>loadSearch</strong></a>(self)</dt><dd><tt>Load&nbsp;lda&nbsp;and&nbsp;hdp&nbsp;documents&nbsp;to&nbsp;search&nbsp;from&nbsp;'topics'&nbsp;folder.&nbsp;This&nbsp;will&nbsp;take&nbsp;the&nbsp;csv&nbsp;files&nbsp;from&nbsp;the&nbsp;topics&nbsp;folder<br>
+and&nbsp;load&nbsp;the&nbsp;hdp&nbsp;and&nbsp;lda&nbsp;analyses&nbsp;and&nbsp;compile&nbsp;those&nbsp;topics&nbsp;and&nbsp;terms&nbsp;to&nbsp;create&nbsp;a&nbsp;wider&nbsp;search&nbsp;for&nbsp;terms&nbsp;<br>
+from&nbsp;relevant&nbsp;documents.</tt></dd></dl>
+
+<dl><dt><a name="WordPatternAnalysis-printOutput"><strong>printOutput</strong></a>(self, topics, terms, year)</dt><dd><tt>Output&nbsp;results&nbsp;to&nbsp;output&nbsp;folder&nbsp;where&nbsp;the&nbsp;file&nbsp;is&nbsp;called&nbsp;terms_topics_(year).csv.<br>
+topics--&nbsp;the&nbsp;topics&nbsp;to&nbsp;output<br>
+terms--&nbsp;the&nbsp;terms&nbsp;to&nbsp;output<br>
+year--&nbsp;the&nbsp;given&nbsp;year&nbsp;for&nbsp;the&nbsp;file&nbsp;name&nbsp;output</tt></dd></dl>
+
+<dl><dt><a name="WordPatternAnalysis-retrieveContent"><strong>retrieveContent</strong></a>(self, yearT, yearE, materialType, flt)</dt><dd><tt>Method&nbsp;will&nbsp;get&nbsp;content&nbsp;from&nbsp;Mongo&nbsp;database&nbsp;based&nbsp;on&nbsp;years&nbsp;searched&nbsp;and&nbsp;only&nbsp;sentences&nbsp;relevant&nbsp;to&nbsp;beetles.<br>
+yearT--&nbsp;the&nbsp;year&nbsp;to&nbsp;begin&nbsp;(inclusive)&nbsp;the&nbsp;search<br>
+yearE--&nbsp;the&nbsp;year&nbsp;up&nbsp;until&nbsp;to&nbsp;conduct&nbsp;the&nbsp;search&nbsp;(not&nbsp;inclusive)&nbsp;<br>
+materialType--&nbsp;the&nbsp;type&nbsp;of&nbsp;material&nbsp;(e.g.,&nbsp;Federal)<br>
+flt--&nbsp;filter&nbsp;list&nbsp;to&nbsp;filter&nbsp;search&nbsp;(e.g.,&nbsp;by&nbsp;'beetle',&nbsp;etc.)</tt></dd></dl>
+
+<dl><dt><a name="WordPatternAnalysis-run"><strong>run</strong></a>(self)</dt><dd><tt>'<br>
+Method&nbsp;to&nbsp;run&nbsp;analysis&nbsp;using&nbsp;documents&nbsp;between&nbsp;given&nbsp;years&nbsp;(i.e.,&nbsp;2010-2015,&nbsp;with&nbsp;2010&nbsp;to&nbsp;2014&nbsp;inclusive)</tt></dd></dl>
+
+<dl><dt><a name="WordPatternAnalysis-searchContent"><strong>searchContent</strong></a>(self, return_list, topics)</dt><dd><tt>Method&nbsp;will&nbsp;conduct&nbsp;tf-idf&nbsp;analysis&nbsp;on&nbsp;relevant&nbsp;text&nbsp;from&nbsp;terms&nbsp;in&nbsp;topics&nbsp;found&nbsp;in&nbsp;the&nbsp;search.<br>
+return_list--&nbsp;the&nbsp;list&nbsp;containing&nbsp;the&nbsp;relevant&nbsp;text<br>
+topics--&nbsp;the&nbsp;topics&nbsp;containing&nbsp;terms&nbsp;to&nbsp;be&nbsp;search</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="nlp.patternMatching.html#PatternMatcher">nlp.patternMatching.PatternMatcher</a>:<br>
+<dl><dt><a name="WordPatternAnalysis-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="WordPatternAnalysis-filenameToOutput"><strong>filenameToOutput</strong></a>(self)</dt><dd><tt>The&nbsp;file&nbsp;name&nbsp;to&nbsp;output&nbsp;the&nbsp;results<br>
+filename--&nbsp;the&nbsp;filename&nbsp;for&nbsp;the&nbsp;output&nbsp;of&nbsp;term&nbsp;frequencies.</tt></dd></dl>
+
+<dl><dt><a name="WordPatternAnalysis-findWholeWord"><strong>findWholeWord</strong></a>(self, w)</dt><dd><tt>Method&nbsp;to&nbsp;find&nbsp;a&nbsp;whole&nbsp;word.<br>
+w--&nbsp;the&nbsp;word&nbsp;to&nbsp;find</tt></dd></dl>
+
+<dl><dt><a name="WordPatternAnalysis-getCursor"><strong>getCursor</strong></a>(self)</dt><dd><tt>Method&nbsp;to&nbsp;get&nbsp;the&nbsp;Mongo&nbsp;cursor&nbsp;to&nbsp;find&nbsp;the&nbsp;data&nbsp;for&nbsp;texts&nbsp;analyzed.</tt></dd></dl>
+
+<dl><dt><a name="WordPatternAnalysis-retrieveContentFrequencyResults"><strong>retrieveContentFrequencyResults</strong></a>(self, keyValues)</dt><dd><tt>Get&nbsp;content&nbsp;frequency&nbsp;for&nbsp;terms.<br>
+keyValues--&nbsp;terms&nbsp;to&nbsp;look&nbsp;for.</tt></dd></dl>
+
+<dl><dt><a name="WordPatternAnalysis-termMatchingToPdfs"><strong>termMatchingToPdfs</strong></a>(self)</dt><dd><tt>Method&nbsp;to&nbsp;output&nbsp;frequency&nbsp;counts&nbsp;of&nbsp;terms&nbsp;from&nbsp;pdf&nbsp;files.</tt></dd></dl>
+
+<dl><dt><a name="WordPatternAnalysis-tokenizeSentence"><strong>tokenizeSentence</strong></a>(self, content)</dt><dd><tt>Method&nbsp;used&nbsp;to&nbsp;tokenize&nbsp;content&nbsp;into&nbsp;sentences.<br>
+content--&nbsp;the&nbsp;content&nbsp;to&nbsp;tokenize&nbsp;to&nbsp;sentences</tt></dd></dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>stopwords</strong> = &lt;WordListCorpusReader in u'/home/mark/nltk_data/corpora/stopwords'&gt;<br>
+<strong>wn</strong> = &lt;WordNetCorpusReader in u'/home/mark/nltk_data/corpora/wordnet'&gt;</td></tr></table>
+</body></html>
