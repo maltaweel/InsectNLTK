@@ -60,6 +60,17 @@ typeResults={}
 #results based on beetles and relevant sentences
 beetleResults={} 
 
+#bigram to build from texts
+bigram=''
+
+#the corpus of texts
+corpus=''
+
+#dictionary used for terms
+dictionary=''
+
+#texts used in training or application
+train_texts=''
 
 def integrateText(content):
     '''
@@ -391,8 +402,6 @@ def printEvaluation(modList,results,i):
 
 #bigram = gensim.models.Phrases(train_texts)
 
-
-
 def run():
     '''
     The method to run for implementing the topic models (LDA and HDP).
@@ -415,7 +424,7 @@ def run():
     pn=pn.split("src")[0]
 
     p=PatternMatcher()
-    fb=filterBeetle.FilterBeetle()
+   
 
     content=p.retrieveContent(flt)
     results=integrateText(content)
@@ -437,7 +446,7 @@ def run():
     #keep track of iteration
     iiT=2
 
-    #up to 50 topics are tested 
+    #topics are tested based on a given topic number
     for i in range(1,topicN,1): 
 #    lsi model
     
