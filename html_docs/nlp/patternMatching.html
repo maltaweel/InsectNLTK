@@ -62,10 +62,11 @@ w--&nbsp;the&nbsp;word&nbsp;to&nbsp;find</tt></dd></dl>
 
 <dl><dt><a name="PatternMatcher-getCursor"><strong>getCursor</strong></a>(self)</dt><dd><tt>Method&nbsp;to&nbsp;get&nbsp;the&nbsp;Mongo&nbsp;cursor&nbsp;to&nbsp;find&nbsp;the&nbsp;data&nbsp;for&nbsp;texts&nbsp;analyzed.</tt></dd></dl>
 
-<dl><dt><a name="PatternMatcher-retrieveContent"><strong>retrieveContent</strong></a>(self, flt)</dt><dd><tt>Get&nbsp;content&nbsp;in&nbsp;the&nbsp;database,&nbsp;which&nbsp;includes&nbsp;the&nbsp;column&nbsp;output&nbsp;from&nbsp;the&nbsp;MPB_Source_Doc.csv&nbsp;file&nbsp;and&nbsp;the&nbsp;<br>
+<dl><dt><a name="PatternMatcher-retrieveContent"><strong>retrieveContent</strong></a>(self, flt, government)</dt><dd><tt>Get&nbsp;content&nbsp;in&nbsp;the&nbsp;database,&nbsp;which&nbsp;includes&nbsp;the&nbsp;column&nbsp;output&nbsp;from&nbsp;the&nbsp;MPB_Source_Doc.csv&nbsp;file&nbsp;and&nbsp;the&nbsp;<br>
 data&nbsp;in&nbsp;the&nbsp;MongoDB,&nbsp;including&nbsp;the&nbsp;full&nbsp;text.&nbsp;Filter&nbsp;is&nbsp;used&nbsp;to&nbsp;include&nbsp;desired&nbsp;text.&nbsp;<br>
 &nbsp;<br>
-flt-filter&nbsp;applied&nbsp;to&nbsp;text&nbsp;to&nbsp;include&nbsp;desired&nbsp;text.</tt></dd></dl>
+flt--&nbsp;filter&nbsp;applied&nbsp;to&nbsp;text&nbsp;to&nbsp;include&nbsp;desired&nbsp;text.<br>
+government--&nbsp;option&nbsp;to&nbsp;apply&nbsp;a&nbsp;given&nbsp;government&nbsp;type&nbsp;or&nbsp;not</tt></dd></dl>
 
 <dl><dt><a name="PatternMatcher-retrieveContentFrequencyResults"><strong>retrieveContentFrequencyResults</strong></a>(self, keyValues)</dt><dd><tt>Get&nbsp;content&nbsp;frequency&nbsp;for&nbsp;terms.<br>
 keyValues--&nbsp;terms&nbsp;to&nbsp;look&nbsp;for.</tt></dd></dl>
