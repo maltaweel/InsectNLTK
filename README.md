@@ -15,7 +15,9 @@ Matplotlib 2.1+
 Gensim 3.3+
 PyLDAvis 2.1+
 
-<i>Scraping</i>
+For given code, use the src folder, which contains the relevant packages described below.
+
+<i>scrape</i>
 
 The scraping modules relate to extracting data from the pdf files downloaded that deal with the primary text analyzed. Data are scraped and metadata and data from MPB_Source_Doc.csv are used to organize the Mongo database used. 
 
@@ -25,13 +27,26 @@ pdfScrape:  methods read() and inputToDatabase() read pdf text and input to the 
 
 readScrapedPDF:  method readText() reads the content.txt file and sends the information to pdfScrape.inputToDatabase(). The run() method controls the methods in the scrape package. 
 
-<i>NLP</i>
+<i>nlp</i>
 
 The main LDA and HDP topic modeling methods are launched from here. The utilise Gensim's implementation of these methods. The module model.py controls the launching and application of LDA and HDP. The patternMatching.py module is used to guide filtering and organising of text to analyse.
 
-model:  The run() method controls the utilising of methods in model.py and patternMatching.py. The run() method, once launched, will ask for the number of topics (used for LDA), any filters (e.g., 'beetle') for terms to search within texts. The default assumes 'dendroctonus','beetle'. Otherwise, users could also put no terms, which means there is no term to filter. Filtering means that sentences before, after, and containing the term will be included in the analysis. If no filter is chosen, then all text is analyzed. Texts are processed in the preProcsText() and process_texts() methods. These tokenize and remove stop words, etc. in preparation for the LDA and HDP analyses. Once the analysed corpus is created, then the LDA and HDP are used based on a given topic number used from the input. The end result will be output in the results folder called analysis_results for the hdp and lda models that looks at the term and topic values and evaluationTotal, which looks at the coherence score used to test the number of topics applied. The method also prints LDA_Visualization html files that are visualizations that can be adjusted to see what the LDA output looks like. 
+model:  The run() method controls the utilising of methods in model.py and patternMatching.py. The run() method, once launched, will ask for the number of topics (used for LDA), any filters (e.g., 'beetle') for terms to search within texts. The default assumes 'dendroctonus','beetle'. Otherwise, users could also put no terms, which means there is no term to filter. Filtering means that sentences before, after, and containing the term will be included in the analysis. If no filter is chosen, then all text is analyzed. Filter terms are separated by a comma. This is also true for government material, where the type of government-related text are chose and indicated. No input means no input is applied, while one or more filters for government type could be applied (i.e., Congressional document, Legal news, GAO document, Federal agency document, Legal news, The White House document).
+
+Texts are processed in the preProcsText() and process_texts() methods. These tokenize and remove stop words, etc. in preparation for the LDA and HDP analyses. Once the analysed corpus is created, then the LDA and HDP are used based on a given topic number used from the input. The end result will be output in the results folder called analysis_results for the hdp and lda models that looks at the term and topic values and evaluationTotal, which looks at the coherence score used to test the number of topics applied. The method also prints LDA_Visualization html files that are visualizations that can be adjusted to see what the LDA output looks like. 
 
 patternMatching:  The only method used here is retrieveContent(), which also applies a filter to retrieve text desired. The basic point of this method is to get the desired text for analysis. The method is called within model.run().
+
+<i>db</i>
+filterBeetle:  module uses filterBeetleSentences() that filters are returns relevant sentences for the analysis. This is called by patternMatching.retrieveContent(). Sentences before, after, and within the desired (filtered) terms are returned.
+
+filterGovernment:  module uses filterGovernmentType(), which is a method called by patternMatching.retrieveContent() and finds relevant government text to analyze. 
+
+mongoConnection:  module gets relevant database from Mongo (assumed to be insectNLTK) and collection (also called insectNLTK).
+
+
+
+
 
 
 
