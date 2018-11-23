@@ -60,15 +60,6 @@ typeResults={}
 #results based on beetles and relevant sentences
 beetleResults={} 
 
-#bigram to build from texts
-bigram=''
-
-#the corpus of texts
-corpus=''
-
-#dictionary used for terms
-dictionary=''
-
 #texts used in training or application
 train_texts=''
 
@@ -219,7 +210,7 @@ def preProcsText(files):
     
 
 
-def process_texts(texts):
+def process_texts(bigram, texts):
     """
     Function to process texts. Following are the steps we take:
     
@@ -229,6 +220,7 @@ def process_texts(texts):
     
     Parameters:
     ----------
+    bigram-- bigram to analyze
     texts-- Tokenized texts.
     
     Returns:
@@ -272,11 +264,13 @@ def evaluate_graph(dictionary, corpus, texts, limit):
     return lm_list, c_v
 
 
-def ret_top_model():
+def ret_top_model(corpus,dictionary):
     """
     Since LDAmodel is a probabilistic model, it comes up different topics each time we run it. To control the
     quality of the topic model we produce, we can see what the interpretability of the best topic is and keep
     evaluating the topic model until this threshold is crossed. 
+    corpus-- the text corpus
+    dictionary-- term dictionary
 
     method returns lm: final evaluated topic model
     method returns top_topics: ranked topics in decreasing order. List of tuples
@@ -437,7 +431,7 @@ def run():
 
     results=preProcsText(results)
 
-    train_texts=process_texts(results)
+    train_texts=process_texts(bigram,results)
 
     print('start')
 
@@ -448,7 +442,7 @@ def run():
     iiT=2
 
     #topics are tested based on a given topic number
-    for i in range(1,topicN,1): 
+    for i in range(2,int(topicN),1): 
 #    lsi model
     
         print('run evaluation: '+ str(i))
@@ -495,7 +489,7 @@ def run():
         location=os.path.join(pn,'results')
      
         #visualize outputs
-        pyLDAvis.save_html(visualisation2, location+'LDA_Visualization'+str(i)+'.html') 
+        pyLDAvis.save_html(visualisation2, os.path.join(location,'LDA_Visualization'+str(i)+'.html')) 
     
     
     iiT=i

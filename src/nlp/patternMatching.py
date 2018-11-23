@@ -225,6 +225,10 @@ class PatternMatcher :
         for document in cursor:
             ii+=1
             
+            
+            if ii>10:
+                continue
+            
             code=document['Code']
             dateAccess=document['Database Name']
             
