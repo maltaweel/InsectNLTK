@@ -50,7 +50,9 @@ mongoConnection:  module gets relevant database from Mongo (assumed to be insect
 
 countYears: module uses a run() method to launch loadData(), which counts the number of documents for given years and number of words for those years. The results are printed in output as year_numbers.csv.
 
-searchMatch:  module is used to merge LDP and HDP results, which are assumed to be placed in topics, 
+searchMatch:  module is used to merge LDP and HDP results in loadSearch(), which are assumed to be placed in topics. Then the retrieveContent() method will do the tf-idf on terms found in topics. The output of this is in the termAnalysis folder. The analysis asks what year to start (inclusive) to what year to end (exclusive). The type of document is then asked, where the input expected are one of the type of documents (Congressional document, Legal news, GAO document, Federal agency document, Legal news, The White House document). Filter terms are similar to be before as discussed in model, where it is expected more than one term will be separated by a comma (e.g., beetle, bark, etc.).
+
+termAnalysis:  module used to look at termAnalysis results based on years based on year intervals (inclusive start year and exclusive end year). A specific term is searched for the interval where the tf-idf score is returned. The module is launched in the run() method. 
 
 
 
