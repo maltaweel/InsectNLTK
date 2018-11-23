@@ -79,7 +79,7 @@ i--&nbsp;the&nbsp;index&nbsp;output&nbsp;desired</tt></dd></dl>
  <dl><dt><a name="-printResults"><strong>printResults</strong></a>(i, model)</dt><dd><tt>Output&nbsp;results&nbsp;of&nbsp;the&nbsp;analysis<br>
 i--&nbsp;the&nbsp;topic&nbsp;number<br>
 model--&nbsp;the&nbsp;model&nbsp;used&nbsp;(e.g.,&nbsp;lda,&nbsp;hdp)</tt></dd></dl>
- <dl><dt><a name="-process_texts"><strong>process_texts</strong></a>(texts)</dt><dd><tt>Function&nbsp;to&nbsp;process&nbsp;texts.&nbsp;Following&nbsp;are&nbsp;the&nbsp;steps&nbsp;we&nbsp;take:<br>
+ <dl><dt><a name="-process_texts"><strong>process_texts</strong></a>(bigram, texts)</dt><dd><tt>Function&nbsp;to&nbsp;process&nbsp;texts.&nbsp;Following&nbsp;are&nbsp;the&nbsp;steps&nbsp;we&nbsp;take:<br>
 &nbsp;<br>
 1.&nbsp;Stopword&nbsp;Removal.<br>
 2.&nbsp;Collocation&nbsp;detection.<br>
@@ -87,14 +87,17 @@ model--&nbsp;the&nbsp;model&nbsp;used&nbsp;(e.g.,&nbsp;lda,&nbsp;hdp)</tt></dd><
 &nbsp;<br>
 Parameters:<br>
 ----------<br>
+bigram--&nbsp;bigram&nbsp;to&nbsp;analyze<br>
 texts--&nbsp;Tokenized&nbsp;texts.<br>
 &nbsp;<br>
 Returns:<br>
 -------<br>
 texts:&nbsp;Pre-processed&nbsp;tokenized&nbsp;texts.</tt></dd></dl>
- <dl><dt><a name="-ret_top_model"><strong>ret_top_model</strong></a>()</dt><dd><tt>Since&nbsp;LDAmodel&nbsp;is&nbsp;a&nbsp;probabilistic&nbsp;model,&nbsp;it&nbsp;comes&nbsp;up&nbsp;different&nbsp;topics&nbsp;each&nbsp;time&nbsp;we&nbsp;run&nbsp;it.&nbsp;To&nbsp;control&nbsp;the<br>
+ <dl><dt><a name="-ret_top_model"><strong>ret_top_model</strong></a>(corpus, dictionary)</dt><dd><tt>Since&nbsp;LDAmodel&nbsp;is&nbsp;a&nbsp;probabilistic&nbsp;model,&nbsp;it&nbsp;comes&nbsp;up&nbsp;different&nbsp;topics&nbsp;each&nbsp;time&nbsp;we&nbsp;run&nbsp;it.&nbsp;To&nbsp;control&nbsp;the<br>
 quality&nbsp;of&nbsp;the&nbsp;topic&nbsp;model&nbsp;we&nbsp;produce,&nbsp;we&nbsp;can&nbsp;see&nbsp;what&nbsp;the&nbsp;interpretability&nbsp;of&nbsp;the&nbsp;best&nbsp;topic&nbsp;is&nbsp;and&nbsp;keep<br>
 evaluating&nbsp;the&nbsp;topic&nbsp;model&nbsp;until&nbsp;this&nbsp;threshold&nbsp;is&nbsp;crossed.&nbsp;<br>
+corpus--&nbsp;the&nbsp;text&nbsp;corpus<br>
+dictionary--&nbsp;term&nbsp;dictionary<br>
 &nbsp;<br>
 method&nbsp;returns&nbsp;lm:&nbsp;final&nbsp;evaluated&nbsp;topic&nbsp;model<br>
 method&nbsp;returns&nbsp;top_topics:&nbsp;ranked&nbsp;topics&nbsp;in&nbsp;decreasing&nbsp;order.&nbsp;List&nbsp;of&nbsp;tuples</tt></dd></dl>
@@ -112,10 +115,7 @@ coherence&nbsp;testing&nbsp;for&nbsp;LDA&nbsp;models</tt></dd></dl>
     
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><strong>beetleResults</strong> = {}<br>
-<strong>bigram</strong> = ''<br>
-<strong>corpus</strong> = ''<br>
 <strong>dateResults</strong> = {}<br>
-<strong>dictionary</strong> = ''<br>
 <strong>listResults</strong> = []<br>
 <strong>stops</strong> = set([u'a', u'about', u'above', u'after', u'again', u'against', ...])<br>
 <strong>stopwords</strong> = [u'i', u'me', u'my', u'myself', u'we', u'our', u'ours', u'ourselves', u'you', u"you're", u"you've", u"you'll", u"you'd", u'your', u'yours', u'yourself', u'yourselves', u'he', u'him', u'his', ...]<br>
