@@ -1,6 +1,6 @@
 # InsectNLTK
 
-Note: This file contains code and data (pdfs) used in InsectNLTK test case. The pdf files included here are not all of the pds used in the article but reflect a sample of them. The full set of articles can be downloaded and obtained from relevant US government records referenced in the article. The python docs are included in the html_docs folder, which provides information about the modules and methods used. 
+Note: This file contains code and data (pdfs) used in InsectNLTK test case. The pdf files included here are not all of the pdfs used in the article but reflect a sample of them. The full set of articles can be downloaded and obtained from relevant US government records referenced in the article. The python docs are included in the html_docs folder, which provides information about the modules and methods used. The file MPB_Source_Doc.csv contains relevant background on the pdf files used for analysis. The pdfs folder contains pdfs used, although not all are uploaded here since they are very large files in cases. The other folders, outside of src, are used for various anlayses and outputs. 
 
 <b>Code</b>
 
@@ -23,7 +23,7 @@ The scraping modules relate to extracting data from the pdf files downloaded tha
 
 csvExtract: This module reads the MPB_Source_Doc.csv file using the readDates() method. There is a run() method that launches this module but readDates() is called in pdfScrape.py.
 
-pdfScrape:  methods read() and inputToDatabase() read pdf text and input to the database respectively.The method read() produces a text file "content.txt" placed in the content folder, which has the text data from the files, that is then used to populate the Mongo database for the pdf files anlaysed in inputToDatabase().
+pdfScrape:  methods read() and inputToDatabase() read pdf text and input to the database respectively. The method read() produces a text file "content.txt" placed in the content folder, which has the text data from the files, that is then used to populate the Mongo database for the pdf files analyzed in inputToDatabase().
 
 readScrapedPDF:  method readText() reads the content.txt file and sends the information to pdfScrape.inputToDatabase(). The run() method controls the methods in the scrape package. 
 
@@ -52,7 +52,7 @@ countYears: module uses a run() method to launch loadData(), which counts the nu
 
 searchMatch:  module is used to merge LDP and HDP results in loadSearch(), which are assumed to be placed in topics. Then the retrieveContent() method will do the tf-idf on terms found in topics. The output of this is in the termAnalysis folder. The analysis asks what year to start (inclusive) to what year to end (exclusive). The type of document is then asked, where the input expected are one of the type of documents (Congressional document, Legal news, GAO document, Federal agency document, Legal news, The White House document). Filter terms are similar to be before as discussed in model, where it is expected more than one term will be separated by a comma (e.g., beetle, bark, etc.).
 
-termAnalysis:  module used to look at termAnalysis results based on years based on year intervals (inclusive start year and exclusive end year). A specific term is searched for the interval where the tf-idf score is returned. The module is launched in the run() method. 
+termAnalysis:  module used to look at termAnalysis results based on years based on year intervals (inclusive start year and exclusive end year). A specific term is searched for the interval where the tf-idf score is returned in the findTermAndPrint() method. The module is launched in the run() method, where the output is in the output directory.
 
 
 
