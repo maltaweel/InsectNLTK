@@ -25,7 +25,14 @@ pdfScrape:  methods read() and inputToDatabase() read pdf text and input to the 
 
 readScrapedPDF:  method readText() reads the content.txt file and sends the information to pdfScrape.inputToDatabase(). The run() method controls the methods in the scrape package. 
 
-<i>Model</i>
+<i>NLP</i>
+
+The main LDA and HDP topic modeling methods are launched from here. The utilise Gensim's implementation of these methods. The module model.py controls the launching and application of LDA and HDP. The patternMatching.py module is used to guide filtering and organising of text to analyse.
+
+model:  The run() method controls the utilising of methods in model.py and patternMatching.py. The run() method, once launched, will ask for the number of topics (used for LDA), any filters (e.g., 'beetle') for terms to search within texts. The default assumes 'dendroctonus','beetle'. Otherwise, users could also put no terms, which means there is no term to filter. Filtering means that sentences before, after, and containing the term will be included in the analysis. If no filter is chosen, then all text is analyzed. Texts are processed in the preProcsText() and process_texts() methods. These tokenize and remove stop words, etc. in preparation for the LDA and HDP analyses. Once the analysed corpus is created, then the LDA and HDP are used based on a given topic number used from the input. The end result will be output in the results folder called analysis_results for the hdp and lda models that looks at the term and topic values and evaluationTotal, which looks at the coherence score used to test the number of topics applied.
+
+
+
 
 
 
