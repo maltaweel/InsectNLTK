@@ -38,11 +38,22 @@ Texts are processed in the preProcsText() and process_texts() methods. These tok
 patternMatching:  The only method used here is retrieveContent(), which also applies a filter to retrieve text desired. The basic point of this method is to get the desired text for analysis. The method is called within model.run().
 
 <i>db</i>
+
 filterBeetle:  module uses filterBeetleSentences() that filters are returns relevant sentences for the analysis. This is called by patternMatching.retrieveContent(). Sentences before, after, and within the desired (filtered) terms are returned.
 
 filterGovernment:  module uses filterGovernmentType(), which is a method called by patternMatching.retrieveContent() and finds relevant government text to analyze. 
 
 mongoConnection:  module gets relevant database from Mongo (assumed to be insectNLTK) and collection (also called insectNLTK).
+
+<i>analysis</i>
+
+
+countYears: module uses a run() method to launch loadData(), which counts the number of documents for given years and number of words for those years. The results are printed in output as year_numbers.csv.
+
+searchMatch:  module is used to merge LDP and HDP results, which are assumed to be placed in topics, 
+
+
+
 
 
 
