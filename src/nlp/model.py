@@ -410,6 +410,7 @@ def run():
     '''
     topicN=raw_input("Number of topics:  ")
     fll=raw_input("Filter Terms: ")
+    gov=raw_input("Government Material: ")
     fflt=fll.split(",")
     
     flt=[]
@@ -426,7 +427,7 @@ def run():
     p=PatternMatcher()
    
 
-    content=p.retrieveContent(flt)
+    content=p.retrieveContent(flt,gov)
     results=integrateText(content)
 
     #results=retrieveText(results)

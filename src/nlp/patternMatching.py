@@ -196,20 +196,24 @@ class PatternMatcher :
             return frqResults
     
     
-    def retrieveContent(self,flt):
+    def retrieveContent(self,flt,government):
 #        flt={'Academic journal article '}
         '''
         Get content in the database, which includes the column output from the MPB_Source_Doc.csv file and the 
         data in the MongoDB, including the full text. Filter is used to include desired text. 
         
-        flt-filter applied to text to include desired text. 
+        flt-- filter applied to text to include desired text.
+        government-- option to apply a given government type or not
         '''
         m=mongo()
         db=m.getDatabase()
         fs = gridfs.GridFS(db)
         
         cursor = self.getCursor()
-#       cursor=filterGovernment.filterGovernmentType(flt, cursor)
+        
+        if len(government)>0:
+            cursor=filterGovernment.filterGovernmentType(government, cursor)
+            
         fb=filterBeetle.FilterBeetle()
         
         return_list=[]
