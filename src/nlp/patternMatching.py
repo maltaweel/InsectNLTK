@@ -200,7 +200,9 @@ class PatternMatcher :
 #        flt={'Academic journal article '}
         '''
         Get content in the database, which includes the column output from the MPB_Source_Doc.csv file and the 
-        data in the MongoDB, including the full text.
+        data in the MongoDB, including the full text. Filter is used to include desired text. 
+        
+        flt-filter applied to text to include desired text. 
         '''
         m=mongo()
         db=m.getDatabase()
