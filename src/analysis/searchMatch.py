@@ -121,7 +121,7 @@ class WordPatternAnalysis (patternMatching.PatternMatcher) :
             if materialType is not "":
                 
                 
-                if materialType not in material:
+                if materialType.lower() not in material.lower():
                     continue
                 
             
@@ -180,6 +180,9 @@ class WordPatternAnalysis (patternMatching.PatternMatcher) :
    
         for filename in os.listdir(path):
             name=os.path.join(path,filename)
+            if 'files.rtf' in name:
+                continue
+            
             with open(name,'rU') as csvfile:
                 reader = csv.DictReader(csvfile)
                 
