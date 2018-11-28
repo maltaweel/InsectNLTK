@@ -25,7 +25,7 @@ csvExtract: This module reads the MPB_Source_Doc.csv file using the readDates() 
 
 pdfScrape:  methods read() and inputToDatabase() read pdf text and input to the database respectively. The method read() produces a text file "content.txt" placed in the content folder, which has the text data from the files, that is then used to populate the Mongo database for the pdf files analyzed in inputToDatabase().
 
-readScrapedPDF:  method readText() reads the content.txt file and sends the information to pdfScrape.inputToDatabase(). The run() method controls the methods in the scrape package. This should be the only module that needs running as it will utilise csvExtract and pdfScrape, which will extract the MPB_Source_Doc file, which are the data used for the pdfs, and scrape the pdfs, associating the files together.
+readScrapedPDF:  method readText() reads the content.txt file and sends the information to pdfScrape.inputToDatabase(). The run() method controls the methods in the scrape package. This should be the only module that needs running as it will utilise csvExtract and pdfScrape, which will extract the MPB_Source_Doc file, which are the meta data used for the pdfs, and scrape the pdfs, associating all the data together.
 
 <i>nlp</i>
 
