@@ -4,7 +4,7 @@ Note: This file contains code and data (pdfs) used in InsectNLTK test case. The 
 
 <b>Code</b>
 
-The code is used for several different steps and analyses. First, there are a few external libraries needed to be installed in order to use InsectNLTK. These include:
+Python 2.7+ was used to develop the code. The code is used for several different steps and analyses. First, there are a few external libraries that need to be installed in order to use InsectNLTK. These include:
 
 NLTK 3.2+
 Numpy 1.14+
@@ -15,7 +15,7 @@ Matplotlib 2.1+
 Gensim 3.3+
 PyLDAvis 2.1+
 
-For given code, use the src folder, which contains the relevant packages described below.
+For given code, see the src folder, which contains the relevant packages described below.
 
 <i>scrape</i>
 
